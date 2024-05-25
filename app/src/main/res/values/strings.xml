@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BookStoreApp</string>
+    <string name="author">Tên Nhóm</string>
+    <string name="email">tranghayday2004@gmail.com</string>
+    <string name="phone">(+84) 907 0917 36</string>
+    <string name="app_title">Book Online Store App</string>
+    <string name="showAllBook">Show All Books</string>
+    <string name="addBook">Add book to store</string>
+    <string name="findBook">Find book by ID</string>
+</resources>
