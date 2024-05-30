@@ -106,7 +106,7 @@ fun Find() {
             Text(text = "Save", textAlign = TextAlign.Center, color = Color.Red)
         }
         book.let {
-            BookItem(book = it)
+            BookItemImage(book = it)
             PdfScreen(book = it)
         }
     }

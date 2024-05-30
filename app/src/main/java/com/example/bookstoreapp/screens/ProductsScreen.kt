@@ -27,7 +27,7 @@ import com.example.bookstoreapp.methods.getBooks
 import com.example.bookstoreapp.model.Book
 import com.example.bookstoreapp.ui.theme.bg1
 import com.example.bookstoreapp.ui.theme.bg2
-
+private const val URL_IMAGE = "http://172.20.10.2/ltweb/chuong_14/duan_demo/uploads/"
 @Composable
 fun ProductsScreen() {
     var list by remember { mutableStateOf(mutableStateListOf<Book>()) }
@@ -67,6 +67,7 @@ fun ProductsScreen() {
     }
 }
 
+// hàm đọc và hiển thị sách
 @Composable
 fun showBooks(list: MutableList<Book>) {
     LazyColumn(
@@ -74,13 +75,83 @@ fun showBooks(list: MutableList<Book>) {
         verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         items(list) { book ->
-            BookItem(book = book)
+            BookItemImage(book = Book())
+        }
+    }
+}
+
+// hàm hiển thị từng quyển sách
+@Composable
+fun BookItem(book: Book) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth(),
+        contentAlignment = Alignment.TopCenter
+    ) {
+        Card(
+            modifier = Modifier
+                .wrapContentSize()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.LightGray)
+                .padding(8.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                book.title?.let {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "")
+                        Column() {
+                            Text(
+                                modifier = Modifier.padding(start = 6.dp),
+                                text = "ID: ${book.id}",
+                                color = Color.Red,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                modifier = Modifier.padding(start = 6.dp),
+                                text = it,
+                                color = Color.Blue,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                    }
+                }
+                book.author?.let {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(imageVector = Icons.Default.Person, contentDescription = "")
+                        Text(
+                            modifier = Modifier.padding(start = 6.dp),
+                            text = "ID: ${book.id}",
+                            color = Color.Black,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
+                }
+                book.description?.let {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                        Text(
+                            modifier = Modifier.padding(start = 6.dp),
+                            text = "ID: ${book.id}",
+                            color = Color.Black,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
+                }
+            }
         }
     }
 }
 
 @Composable
-fun BookItem(book: Book) {
+fun BookItemImage(book: Book) {
     Box(
         modifier = Modifier
             .fillMaxWidth(),
